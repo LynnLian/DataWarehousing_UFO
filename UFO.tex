@@ -390,22 +390,43 @@ Then, in Section~\ref{sec:concept} we describe what is our concern to model the 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Open Data: MyDataSource} \label{sec:dataunderstanding}
+\section{Open Data: UFO Sightings} \label{sec:dataunderstanding}
 As part of the \emph{Data Understanding} phase for our data science project, we first look at the state
-of the art concerning our problem. The material presented in this section is based on online information (see \cite{scdkimball,wikiscd} and \cite{wikitempdb}) as well as 
-the text books \cite{dwhtoolkit} and \cite{kemperbi}...
+of the art concerning our problem. The material presented in this section is based on online information (see \cite{scdkimball,wikiscd} and \cite{wikitempdb}) (placeholder XXXXXXXXXXX see how to add the link in .bib -->https://www.kaggle.com/NUFORC/ufo-sightings)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Concept for Problem X} \label{sec:concept}
-In your descriptions, you can also use enumerations, for example what you will do:
+\section{Concept for Problem} \label{sec:concept}
+During the \emph{Data Understanding} phase, we find out a problem that we don't directly have the data we need.Additionally, some entries has NULL values. Accordingly, we need to have our Data prepared before the Analysis.
 
-\begin{enumerate}
-	\item Define the problem
-	\item Describe the necessary tools for the solution
-	\item A DWH layout
-	\item An Analysis using Reporting or LibreOffice.
-\end{enumerate}
- This concept must now be put into practice.
+\subsection{Data Profiling}\label{subsec:dataProfiling}
+In the \emph{Data Profiling} step, we realize not all the column we would need. Accordingly, we will only keep columns of:
+\begin{itemize}
+    \item datetime
+    \item city
+    \item state
+    \item country
+    \item shape
+    \item duration(second)
+    \item date posted
+\end{itemize}
+Also, for the NULL values, we will fill a necessary value in difference columns:
+\begin{itemize}
+    \item city / state / country\\
+    If there is NULL values in city or state but not country. We fill in the country in those two columns because we will mainly focous on the fact with country.If the ones with both state and country missin, we will try to look at the city name, find the country and manually map as much as possible. The rest without reasonable information were filled with "unknown".
+    \item shape\\
+    We will fill in "unknown" to replace the NULL values.
+
+\subsection{Tools}\label{subsec:tools}
+The list of all tools we use in this project and the purpose:  
+\begin{itemize}
+    \item SQLiteManager\\
+    Data Cleaning, ETL process, CDWH \& DM creation
+    \item DBSchema\\
+    Forward Engineering
+    \item BIRT\\
+    Analytics
+    \item Python\\
+    Data Cleaning
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -426,10 +447,11 @@ The solution approach is visualized in figure \ref{fig:probov}.
 %
 This means, we can solve the problem in steps as follows:
 \begin{itemize}
-  \item step 1
-  \item step 2
+  \item step 1 Extract \\
+  Download the data from website then create a database to store all raw data.
+  \item step 2 Filtering
+  Fill in values by the rule that mention in \ref{subsec:dataProfiling}.
   \item ...
-  \item step $n$
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
