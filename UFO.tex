@@ -3,6 +3,7 @@
 %% by Daniel Kirchner, Alex Lotz, Andreas Steck
 
 
+
 \documentclass[11pt, journal]{IEEEtran}
 %\documentclass[conference]{IEEEtran}
 %
@@ -10,6 +11,7 @@
 % manually specify the path to it like:
 % \documentclass[journal]{../sty/IEEEtran}
 
+\usepackage{graphicx}
 
 % Some very useful LaTeX packages include:
 % (uncomment the ones you want to load)
@@ -427,6 +429,16 @@ The list of all tools we use in this project and the purpose:
     Analytics
     \item Python\\
     Data Cleaning
+    
+\subsection{DWH layout}\label{subsec:DWHLayout}
+After the ELT process, we should have a DHW which looks like this:
+\begin{figure}[htb]
+	\centering
+		\includegraphics[width=1.0\columnwidth]{images/CDWHUFO}
+	\caption{Overview of solution strategy}
+	\label{fig:CDWHlayout}
+\end{figure}
+
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -434,24 +446,22 @@ The list of all tools we use in this project and the purpose:
 This section deals with the implementation of the concept described in Section~\ref{sec:concept} following the \emph{Data Preparation}
 phase of CRISP-DM. 
 
-\subsection{Overall Solution Strategy} \label{subsec:problem}
-%
-The solution approach is visualized in figure \ref{fig:probov}.
-%
-\begin{figure}[htb]
-	\centering
-		\includegraphics[width=1.0\columnwidth]{images/snapshot}
-	\caption{Overview of solution strategy}
-	\label{fig:probov}
-\end{figure}
-%
-This means, we can solve the problem in steps as follows:
+To solve the problem, we have steps as follows:
 \begin{itemize}
   \item step 1 Extract \\
   Download the data from website then create a database to store all raw data.
-  \item step 2 Filtering
+  \item step 2 Filtering\\
   Fill in values by the rule that mention in \ref{subsec:dataProfiling}.
-  \item ...
+  \item step 3 Enrichment\\
+  We would like to see some relationship between the sighn and season, daytime.In other word, we need difference dimentional. So we will create "new" data by using alsorithms:
+  \begin{itemize}
+      \item Create new columns for the year, month, day, hour, daytime, season
+      \item Column daytime\\
+      From 6am to 6pm is defined as daytime. The rest is defined as nighttime
+      \item Column season\\
+      Compute by column month
+  \end{itemize}
+  
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
