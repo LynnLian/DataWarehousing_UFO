@@ -401,7 +401,7 @@ of the art concerning our problem. The material presented in this section is bas
 During the \emph{Data Understanding} phase, we find out a problem that we don't directly have the data we need.Additionally, some entries has NULL values. Accordingly, we need to have our Data prepared before the Analysis.
 
 \subsection{Data Profiling}\label{subsec:dataProfiling}
-In the \emph{Data Profiling} step, we realize not all the column we would need. Accordingly, we will only keep columns of:
+In the Enrichment\emph{Data Profiling} step, we realize not all the column we would need. Accordingly, we will only keep columns of:
 \begin{itemize}
     \item datetime
     \item city
@@ -453,9 +453,11 @@ To solve the problem, we have steps as follows:
   \item step 2 Filtering\\
   Fill in values by the rule that mention in \ref{subsec:dataProfiling}.
   \item step 3 Enrichment\\
-  We would like to see some relationship between the sighn and season, daytime.In other word, we need difference dimentional. So we will create "new" data by using alsorithms:
+  We would like to see some relationship between the sighn and season, daytime, country and so on.In other word, we need difference dimentional. So we will create "new" data by using alsorithms:
   \begin{itemize}
       \item Create new columns for the year, month, day, hour, daytime, season
+      \item Column year, month, day,hour
+      Abtract data from column datetime
       \item Column daytime\\
       From 6am to 6pm is defined as daytime. The rest is defined as nighttime
       \item Column season\\
@@ -466,8 +468,8 @@ To solve the problem, we have steps as follows:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Modeling} \label{sec:modeling}
-Data-Mining: Apply Algorithm 
-Analytics: Create a report with (aggregated) data, for example using Pivot tables 
+This section is to analyze the data.
+We import the Cleaning Data into DWH which you can find it layout in \ref{fig:CDWHlayout}. Before we analyze the data,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Evaluation} \label{sec:Evaluation}
