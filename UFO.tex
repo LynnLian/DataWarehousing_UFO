@@ -1,20 +1,9 @@
-%% infiPaper.tex
-%% 2008/12/09
-%% by Daniel Kirchner, Alex Lotz, Andreas Steck
-
-
 
 \documentclass[11pt, journal]{IEEEtran}
-%\documentclass[conference]{IEEEtran}
-%
-% If IEEEtran.cls has not been installed into the LaTeX system files,
-% manually specify the path to it like:
-% \documentclass[journal]{../sty/IEEEtran}
+
 
 \usepackage{graphicx}
 
-% Some very useful LaTeX packages include:
-% (uncomment the ones you want to load)
 
 %% this is to get centered captions (figure)
 \makeatletter
@@ -33,284 +22,31 @@
 \makeatother
 
 
-% *** MISC UTILITY PACKAGES ***
-%
-%\usepackage{ifpdf}
-% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
-% compilation based on whether the output is pdf or dvi.
-% usage:
-% \ifpdf
-%   % pdf code
-% \else
-%   % dvi code
-% \fi
-% The latest version of ifpdf.sty can be obtained from:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
-% Also, note that IEEEtran.cls V1.7 and later provides a builtin
-% \ifCLASSINFOpdf conditional that works the same way.
-% When switching from latex to pdflatex and vice-versa, the compiler may
-% have to be run twice to clear warning/error messages.
-
 
 % *** CITATION PACKAGES ***
 %
 \usepackage{cite}
-% cite.sty was written by Donald Arseneau
-% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
-% \cite{} output to follow that of IEEE. Loading the cite package will
-% result in citation numbers being automatically sorted and properly
-% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
-% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
-% \cite will automatically add leading space, if needed. Use cite.sty's
-% noadjust option (cite.sty V3.8 and later) if you want to turn this off.
-% cite.sty is already installed on most LaTeX systems. Be sure and use
-% version 4.0 (2003-05-27) and later if using hyperref.sty. cite.sty does
-% not currently provide for hyperlinked citations.
-% The latest version can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/cite/
-% The documentation is contained in the cite.sty file itself.
+
 
 
 % *** GRAPHICS RELATED PACKAGES ***
 %
 \ifCLASSINFOpdf
   \usepackage[pdftex]{graphicx}
-  % declare the path(s) where your graphic files are
-  % \graphicspath{{../pdf/}{../jpeg/}}
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+
 \else
-  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
-  % will default to the driver specified in the system graphics.cfg if no
-  % driver is specified.
-  % \usepackage[dvips]{graphicx}
-  % declare the path(s) where your graphic files are
-  % \graphicspath{{../eps/}}
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.eps}
+
 \fi
-% graphicx was written by David Carlisle and Sebastian Rahtz. It is
-% required if you want graphics, photos, etc. graphicx.sty is already
-% installed on most LaTeX systems. The latest version and documentation can
-% be obtained at: 
-% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
-% Another good source of documentation is "Using Imported Graphics in
-% LaTeX2e" by Keith Reckdahl which can be found as epslatex.ps or
-% epslatex.pdf at: http://www.ctan.org/tex-archive/info/
-%
-% latex, and pdflatex in dvi mode, support graphics in encapsulated
-% postscript (.eps) format. pdflatex in pdf mode supports graphics
-% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
-% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
-% not a bitmapped formats (.jpeg, .png). IEEE frowns on bitmapped formats
-% which can result in "jaggedy"/blurry rendering of lines and letters as
-% well as large increases in file sizes.
-%
-% You can find documentation about the pdfTeX application at:
-% http://www.tug.org/applications/pdftex
 
-
-% *** MATH PACKAGES ***
-%
-%\usepackage[cmex10]{amsmath}
-% A popular package from the American Mathematical Society that provides
-% many useful and powerful commands for dealing with mathematics. If using
-% it, be sure to load this package with the cmex10 option to ensure that
-% only type 1 fonts will utilized at all point sizes. Without this option,
-% it is possible that some math symbols, particularly those within
-% footnotes, will be rendered in bitmap form which will result in a
-% document that can not be IEEE Xplore compliant!
-%
-% Also, note that the amsmath package sets \interdisplaylinepenalty to 10000
-% thus preventing page breaks from occurring within multiline equations. Use:
-%\interdisplaylinepenalty=2500
-% after loading amsmath to restore such page breaks as IEEEtran.cls normally
-% does. amsmath.sty is already installed on most LaTeX systems. The latest
-% version and documentation can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/
-
-
-% *** SPECIALIZED LIST PACKAGES ***
-%
-%\usepackage{algorithmic}
-% algorithmic.sty was written by Peter Williams and Rogerio Brito.
-% This package provides an algorithmic environment fo describing algorithms.
-% You can use the algorithmic environment in-text or within a figure
-% environment to provide for a floating algorithm. Do NOT use the algorithm
-% floating environment provided by algorithm.sty (by the same authors) or
-% algorithm2e.sty (by Christophe Fiorio) as IEEE does not use dedicated
-% algorithm float types and packages that provide these will not provide
-% correct IEEE style captions. The latest version and documentation of
-% algorithmic.sty can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
-% There is also a support site at:
-% http://algorithms.berlios.de/index.html
-% Also of interest may be the (relatively newer and more customizable)
-% algorithmicx.sty package by Szasz Janos:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithmicx/
-
-
-% *** ALIGNMENT PACKAGES ***
-%
-%\usepackage{array}
-% Frank Mittelbach's and David Carlisle's array.sty patches and improves
-% the standard LaTeX2e array and tabular environments to provide better
-% appearance and additional user controls. As the default LaTeX2e table
-% generation code is lacking to the point of almost being broken with
-% respect to the quality of the end results, all users are strongly
-% advised to use an enhanced (at the very least that provided by array.sty)
-% set of table tools. array.sty is already installed on most systems. The
-% latest version and documentation can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/required/tools/
-
-
-%\usepackage{mdwmath}
-%\usepackage{mdwtab}
-% Also highly recommended is Mark Wooding's extremely powerful MDW tools,
-% especially mdwmath.sty and mdwtab.sty which are used to format equations
-% and tables, respectively. The MDWtools set is already installed on most
-% LaTeX systems. The lastest version and documentation is available at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/mdwtools/
-
-
-% IEEEtran contains the IEEEeqnarray family of commands that can be used to
-% generate multiline equations as well as matrices, tables, etc., of high
-% quality.
-
-
-%\usepackage{eqparbox}
-% Also of notable interest is Scott Pakin's eqparbox package for creating
-% (automatically sized) equal width boxes - aka "natural width parboxes".
-% Available at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/eqparbox/
 
 
 % *** SUBFIGURE PACKAGES ***
 \usepackage[tight,footnotesize]{subfigure}
-% subfigure.sty was written by Steven Douglas Cochran. This package makes it
-% easy to put subfigures in your figures. e.g., "Figure 1a and 1b". For IEEE
-% work, it is a good idea to load it with the tight package option to reduce
-% the amount of white space around the subfigures. subfigure.sty is already
-% installed on most LaTeX systems. The latest version and documentation can
-% be obtained at:
-% http://www.ctan.org/tex-archive/obsolete/macros/latex/contrib/subfigure/
-% subfigure.sty has been superceeded by subfig.sty.
-
-
-%\usepackage[caption=false]{caption}
-%\usepackage[font=footnotesize]{subfig}
-% subfig.sty, also written by Steven Douglas Cochran, is the modern
-% replacement for subfigure.sty. However, subfig.sty requires and
-% automatically loads Axel Sommerfeldt's caption.sty which will override
-% IEEEtran.cls handling of captions and this will result in nonIEEE style
-% figure/table captions. To prevent this problem, be sure and preload
-% caption.sty with its "caption=false" package option. This is will preserve
-% IEEEtran.cls handing of captions. Version 1.3 (2005/06/28) and later 
-% (recommended due to many improvements over 1.2) of subfig.sty supports
-% the caption=false option directly:
-%\usepackage[caption=false,font=footnotesize]{subfig}
-%
-% The latest version and documentation can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/subfig/
-% The latest version and documentation of caption.sty can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/caption/
-
-
-% *** FLOAT PACKAGES ***
-%
-%\usepackage{fixltx2e}
-% fixltx2e, the successor to the earlier fix2col.sty, was written by
-% Frank Mittelbach and David Carlisle. This package corrects a few problems
-% in the LaTeX2e kernel, the most notable of which is that in current
-% LaTeX2e releases, the ordering of single and double column floats is not
-% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
-% single column figure to be placed prior to an earlier double column
-% figure. The latest version and documentation can be found at:
-% http://www.ctan.org/tex-archive/macros/latex/base/
-
-
-%\usepackage{stfloats}
-% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
-% the ability to do double column floats at the bottom of the page as well
-% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
-% LaTeX2e). It also provides a command:
-%\fnbelowfloat
-% to enable the placement of footnotes below bottom floats (the standard
-% LaTeX2e kernel puts them above bottom floats). This is an invasive package
-% which rewrites many portions of the LaTeX2e float routines. It may not work
-% with other packages that modify the LaTeX2e float routines. The latest
-% version and documentation can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/sttools/
-% Documentation is contained in the stfloats.sty comments as well as in the
-% presfull.pdf file. Do not use the stfloats baselinefloat ability as IEEE
-% does not allow \baselineskip to stretch. Authors submitting work to the
-% IEEE should note that IEEE rarely uses double column equations and
-% that authors should try to avoid such use. Do not be tempted to use the
-% cuted.sty or midfloat.sty packages (also by Sigitas Tolusis) as IEEE does
-% not format its papers in such ways.
-
-
-%\ifCLASSOPTIONcaptionsoff
-%  \usepackage[nomarkers]{endfloat}
-% \let\MYoriglatexcaption\caption
-% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
-%\fi
-% endfloat.sty was written by James Darrell McCauley and Jeff Goldberg.
-% This package may be useful when used in conjunction with IEEEtran.cls'
-% captionsoff option. Some IEEE journals/societies require that submissions
-% have lists of figures/tables at the end of the paper and that
-% figures/tables without any captions are placed on a page by themselves at
-% the end of the document. If needed, the draftcls IEEEtran class option or
-% \CLASSINPUTbaselinestretch interface can be used to increase the line
-% spacing as well. Be sure and use the nomarkers option of endfloat to
-% prevent endfloat from "marking" where the figures would have been placed
-% in the text. The two hack lines of code above are a slight modification of
-% that suggested by in the endfloat docs (section 8.3.1) to ensure that
-% the full captions always appear in the list of figures/tables - even if
-% the user used the short optional argument of \caption[]{}.
-% IEEE papers do not typically make use of \caption[]'s optional argument,
-% so this should not be an issue. A similar trick can be used to disable
-% captions of packages such as subfig.sty that lack options to turn off
-% the subcaptions:
-% For subfig.sty:
-% \let\MYorigsubfloat\subfloat
-% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
-% For subfigure.sty:
-% \let\MYorigsubfigure\subfigure
-% \renewcommand{\subfigure}[2][\relax]{\MYorigsubfigure[]{#2}}
-% However, the above trick will not work if both optional arguments of
-% the \subfloat/subfig command are used. Furthermore, there needs to be a
-% description of each subfigure *somewhere* and endfloat does not add
-% subfigure captions to its list of figures. Thus, the best approach is to
-% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
-% and instead reference/explain all the subfigures within the main caption.
-% The latest version of endfloat.sty and its documentation can obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/endfloat/
-%
-% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
-% later in the document, say, to conditionally put the References on a 
-% page by themselves.
 
 
 % *** PDF, URL AND HYPERLINK PACKAGES ***
 %
 \usepackage{url}
-% url.sty was written by Donald Arseneau. It provides better support for
-% handling and breaking URLs. url.sty is already installed on most LaTeX
-% systems. The latest version can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/misc/
-% Read the url.sty source comments for usage information. Basically,
-% \url{my_url_here}.
-
-
-% *** Do not adjust lengths that control margins, column widths, etc. ***
-% *** Do not use packages that alter fonts (such as pslatex).         ***
-% There should be no need to do such things with IEEEtran.cls V1.6 and later.
-% (Unless specifically asked to do so by the journal or conference you plan
-% to submit to, of course. )
-
 
 
 % correct bad hyphenation here
@@ -321,16 +57,7 @@
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
 \title{Analysis of Ufo Sightings}
-%
-%
-% author names and IEEE memberships
-% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
-% a structure at a ~ so this keeps an author's name from being broken across
-% two lines.
-% use \thanks{} to gain access to the first footnote area
-% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
-% was not built to handle multiple paragraphs
-%
+
 
 \author{ \parbox{3 in}{\centering Anna Bussas bussas@mail.hs-ulm.de\\
 Syndey Nkemakolam nkemakolam@mail.hs-ulm.de\\
@@ -347,16 +74,6 @@ Tim Hutttlestone huttlestone@mail.hs-ulm.de\\
 \markboth{ }{A Template Paper}
 
 
-% If you want to put a publisher's ID mark on the page you can do it like
-% this:
-%\IEEEpubid{0000--0000/00\$00.00~\copyright~2007 IEEE}
-% Remember, if you use this you must call \IEEEpubidadjcol in the second
-% column for its text to clear the IEEEpubid mark.
-
-% use for special paper notices
-%\IEEEspecialpapernotice{(Invited Paper)}
-
-
 
 
 % make the title area
@@ -365,12 +82,8 @@ Tim Hutttlestone huttlestone@mail.hs-ulm.de\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-Based on the data resourse from XXX and the data processing by CRISP-DM, a fact shows us that XXXXXXXXX
+Based on the data resourse from kaggle.com and the data processing by CRISP-DM, a fact shows us that most people saw UFO as a light shape in US during Summer in 2011. 
 \end{abstract}
-
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
-%\IEEEpeerreviewmaketitle
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -378,30 +91,28 @@ Based on the data resourse from XXX and the data processing by CRISP-DM, a fact 
 \section{Introduction}
 \label{sec:intro}
 We want to analyse the database ufo sightings from
-the website kaggle.com. For this we want to figure out
-e.g. If there are popular ufo shapes per country or if
-the number of ufo sightings depends on daytime or
-nighttime.(XXXXXXXXX To see whether we want to have more )
-
+the website kaggle.com. For this we want to figure out 
+when and where the UFO show up mostly, how the UFO looks like. 
 \subsection{Scenario} \label{subsec:scenario}
-The data source has totally 11 columns which covers the discovering time, location, shapes, duration and so on. As our goal is to find out the popular shapes per country and the number of ufo sightings depending on daytime or nighttime, we need to creates a data warehouse contains at least the information of shapes, country, time category.
+The data source has totally 11 columns which covers the discovering time, location, shapes, duration and so on. As our goal is to find out the shapes, country and the number of ufo sightings depending on daytime or nighttime, we need to creates a data warehouse contains at least the information of shapes, country, time category.
 
 \subsection{Structure of the Paper} \label{subsec:struct}
 The paper is structured as follows: in Section~\ref{sec:dataunderstanding} we present the availability of Open Data we use in this project.
 Then, in Section~\ref{sec:concept} we describe what is our concern to model the original data to our expected data. Finally, we conclude our work in Section~\ref{sec:concl} with (XXXXXXXXXX placeholder --> to see if any section we want to add).
+In Section ~\ref{sec:dataPreparation}, ~\ref{sec:modeling},~\ref{sec:Evaluation}, we will introduce how we process the data under CRISP-DM.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Open Data: UFO Sightings} \label{sec:dataunderstanding}
 As part of the \emph{Data Understanding} phase for our data science project, we first look at the state
-of the art concerning our problem. The material presented in this section is based on online information (see \cite{scdkimball,wikiscd} and \cite{wikitempdb}) (placeholder XXXXXXXXXXX see how to add the link in .bib -->https://www.kaggle.com/NUFORC/ufo-sightings)
+of the art concerning our problem. The material presented in this section is based on Kaggle \cite{kaggle}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Concept for Problem} \label{sec:concept}
-During the \emph{Data Understanding} phase, we find out a problem that we don't directly have the data we need.Additionally, some entries has NULL values. Accordingly, we need to have our Data prepared before the Analysis.
+During the \emph{Data Understanding} phase, we find out a problem that we don't directly have the data we need .Additionally, some entries has NULL values. Accordingly, we need to have our Data prepared before the Analysis.
 
 \subsection{Data Profiling}\label{subsec:dataProfiling}
-In the Enrichment\emph{Data Profiling} step, we realize not all the column we would need. Accordingly, we will only keep columns of:
+In the \emph{Data Profiling} step, we realize not all the column we would need. Accordingly, we will only keep columns of:
 \begin{itemize}
     \item datetime
     \item city
@@ -417,6 +128,7 @@ Also, for the NULL values, we will fill a necessary value in difference columns:
     If there is NULL values in city or state but not country. We fill in the country in those two columns because we will mainly focous on the fact with country.If the ones with both state and country missin, we will try to look at the city name, find the country and manually map as much as possible. The rest without reasonable information were filled with "unknown".
     \item shape\\
     We will fill in "unknown" to replace the NULL values.
+\end{itemize}
 
 \subsection{Tools}\label{subsec:tools}
 The list of all tools we use in this project and the purpose:  
@@ -429,20 +141,21 @@ The list of all tools we use in this project and the purpose:
     Analytics
     \item Python\\
     Data Cleaning
+\end{itemize}
     
 \subsection{DWH layout}\label{subsec:DWHLayout}
 After the ELT process, we should have a DHW which looks like this:
 \begin{figure}[htb]
 	\centering
 		\includegraphics[width=1.0\columnwidth]{images/CDWHUFO}
-	\caption{Overview of solution strategy}
+	\caption{DWH layout}
 	\label{fig:CDWHlayout}
 \end{figure}
 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Data Preparation} \label{sec:impl}
+\section{Data Preparation} \label{sec:dataPreparation}
 This section deals with the implementation of the concept described in Section~\ref{sec:concept} following the \emph{Data Preparation}
 phase of CRISP-DM. 
 
@@ -456,7 +169,7 @@ To solve the problem, we have steps as follows:
   We would like to see some relationship between the sighn and season, daytime, country and so on.In other word, we need difference dimentional. So we will create "new" data by using alsorithms:
   \begin{itemize}
       \item Create new columns for the year, month, day, hour, daytime, season
-      \item Column year, month, day,hour
+      \item Column year, month, day,hour\\
       Abtract data from column datetime
       \item Column daytime\\
       From 6am to 6pm is defined as daytime. The rest is defined as nighttime
@@ -468,18 +181,127 @@ To solve the problem, we have steps as follows:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Modeling} \label{sec:modeling}
-This section is to analyze the data.
-We import the Cleaning Data into DWH which you can find it layout in \ref{fig:CDWHlayout}. Before we analyze the data,
+This section is to analyze the data we have prepare from Section ~\ref{sec:dataPreparation}.
+
+To analyze, we have steps as follows:
+\begin{itemize}
+    \item step 1\\
+    Import Cleaning Data in DWH (see DWH Layout in ~\ref{subsec:DWHLayout})
+    \item step 2\\
+    For the performan and speed, we create four data marts for our goal (See Fig. \ref{fig:dm-cms}, \ref{fig:dm-css}, \ref{fig:dm-dcd}, \ref{fig:dm-scy})
+      
+    \begin{figure}[htb]
+        \centering
+            \includegraphics[width=1.0\columnwidth]{images/city-month-shape}
+        \caption{Data mart - city/month/shape}
+        \label{fig:dm-cms}
+    \end{figure}
+
+     \begin{figure}[htb]
+            \centering
+	            \includegraphics[width=1.0\columnwidth]{images/continent-shape-season}
+            \caption{Data mart - continent/shape/season}
+            \label{fig:dm-css}
+        \end{figure}
+
+     \begin{figure}[htb]
+        \centering
+            \includegraphics[width=1.0\columnwidth]{images/daytime-country-duration}
+        \caption{Data mart - daytime/country/duration}
+        \label{fig:dm-dcd}
+    \end{figure}
+
+     \begin{figure}[htb]
+        \centering
+            \includegraphics[width=1.0\columnwidth]{images/shape-country-year}
+        \caption{Data mart - shape/country/year}
+        \label{fig:dm-scy}
+    \end{figure}
+        
+    \item step 3
+    Using BIRT, we generate reports and find the fact as following:
+        \begin{itemize}
+            \item Number of sightings in North American is extremely higher than other country. The next of the continent we know is Europe.(See Fig.\ref{fig:continent})\\
+            - Data mart - Shape/Country/Year\\
+            - Data cube - continent
+                
+            \item Nearly all sightings shows up in US.(See Fig. \ref{fig:country})\\
+            - Data mart - Shape/Country/Year\\
+            - Data cube - contry
+               
+            \item The most Sightings are seen at 2011. We can see that it obviously increases from 1995 until 2011.(See Fig. \ref{fig:year} )\\
+            - Data mart - Shape/Country/Year\\
+            - Data cube - year
+                
+            \item The UFO is most seen at Summer. (See Fig. \ref{fig:sight-season})\\
+            - Data set - data mart - Continent/Shape/Season\\
+            - Data cube - season
+                 
+            \item Different UFO shapes are seen and the most is likes light.(See Fig. \ref{fig:shape})\\
+            - Data set - data mart - Continent/Shape/Season\\
+            - Data cube - shape
+                
+            \item In difference continents, the most seen shape is still light. (See Fig. \ref{fig:shape-continent})\\
+            - Data set - data mart - Continent/Shape/Season\\
+            - Data cube - shape,continent
+                
+            \item In each season, light shape is mostly seen. (See Fig. \ref{fig:shape-season})\\
+            - Data set - data mart - Continent/shape/season\\
+            - Data cube - season, shape
+                
+        \end{itemize}
+        \begin{figure}[htb]
+            \centering
+                \includegraphics[width=1.0\columnwidth]{images/continent}
+            \caption{Sightings by Location - Continent}
+            \label{fig:continent}
+        \end{figure}
+        \begin{figure}[htb]
+            \centering
+                \includegraphics[width=1.0\columnwidth]{images/country}
+            \caption{Sightings by Location - country}
+            \label{fig:country}
+        \end{figure}
+        \begin{figure}[htb]
+            \centering
+                \includegraphics[width=1.0\columnwidth]{images/year}
+            \caption{Sightings Over Time}
+            \label{fig:year}
+        \end{figure}
+        \begin{figure}[htb]
+            \centering
+                \includegraphics[width=1.0\columnwidth]{images/sightings-season}
+            \caption{Sightings Per Season}
+            \label{fig:sight-season}
+        \end{figure}
+        \begin{figure}[htb]
+            \centering
+                \includegraphics[width=1.0\columnwidth]{images/shape}
+            \caption{Different UFO Shapes Sighted}
+            \label{fig:shape}
+        \end{figure}
+        \begin{figure}[htb]
+            \centering
+                \includegraphics[width=1.0\columnwidth]{images/shape-continent}
+            \caption{Shapes Per Continent}
+            \label{fig:shape-continent}
+        \end{figure}
+        \begin{figure}[htb]
+            \centering
+                \includegraphics[width=1.0\columnwidth]{images/shapes-seasons}
+            \caption{Shapes Per Seasons}
+            \label{fig:shape-season}
+        \end{figure}
+\end{itemize}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Evaluation} \label{sec:Evaluation}
-Did we reach the goals??? Talk about how we know we reach our goal
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Deployment} \label{sec:Deployment}
-To talke about how we make result available and what is the result
+From the reports, we can find out the number of shapes, country and the number of ufo sightings depending on daytime or nighttime. Also the reports in difference dimention. So it reach the goal after evaluation.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion} \label{sec:concl}
-We have shown in this paper that ...
+We have shown in this paper that how we process the data under CRISP-DM and it shows difference dimention of shape, continents, country, seasons. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
