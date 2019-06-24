@@ -32,7 +32,7 @@
 % *** GRAPHICS RELATED PACKAGES ***
 %
 \ifCLASSINFOpdf
-  \usepackage[pdftex]{graphicx}
+  \usepackage{graphicx}
 
 \else
 
@@ -56,11 +56,11 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{Analysis of Ufo Sightings}
+\title{Analysis Of Ufo Sightings}
 
 
 \author{ \parbox{3 in}{\centering Anna Bussas bussas@mail.hs-ulm.de\\
-Syndey Nkemakolam nkemakolam@mail.hs-ulm.de\\
+Sydney Nkemakolam nkemakolam@mail.hs-ulm.de\\
 Kasparas Gudzius gudzius@mail.hs-ulm.de\\
 Zhiwen Lian lian@mail.hs-ulm.de\\
 Tim Hutttlestone huttlestone@mail.hs-ulm.de\\
@@ -82,7 +82,7 @@ Tim Hutttlestone huttlestone@mail.hs-ulm.de\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-Based on the data resourse from kaggle.com and the data processing by CRISP-DM, we can observe that most people saw UFOs as a light shape in the US during Summer in 2011. 
+Based on open data from kaggle.com and data processing based on the CRISP-DM model, it is observed that most people saw UFOs as a light shape in the US at night time during the Summer of 2011. 
 \end{abstract}
 
 
@@ -90,28 +90,27 @@ Based on the data resourse from kaggle.com and the data processing by CRISP-DM, 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 \label{sec:intro}
-We want to analyse the database ufo sightings from
-the website kaggle.com. For this we want to figure out 
-when and where the UFOs show up mostly and how they look like. 
+We intend to analyze the "Ufo Sightings" database from
+the website kaggle.com to figure out when and where the UFOs show up mostly, and what they look like. 
 \subsection{Scenario} \label{subsec:scenario}
-The data source has in total 11 columns which covers the discovering time, location, shapes, duration and so on. As our goal is to find out the shapes, country and the number of ufo sightings depending on daytime or nighttime, we need to create a data warehouse containing at least, the information of shapes, country, time category.
+The data source has in total 11 columns covering the sighting time, location, shape, duration and so on. As our goal is to find out the shapes, country and the number of ufo sightings depending on the time of day -daytime or nighttime-, we need to create a data warehouse containing the appropriate dimensions - Location, Time, etc.
 
 \subsection{Structure of the Paper} \label{subsec:struct}
 The paper is structured as follows: in Section~\ref{sec:dataunderstanding} we present the availability of Open Data we used in this project.
-Then, in Section~\ref{sec:concept} we describe what is our concern to model the original data to our expected data. Finally, we conclude our work in Section~\ref{sec:concl} with (XXXXXXXXXX placeholder --> to see if any section we want to add).
-In Section ~\ref{sec:dataPreparation}, ~\ref{sec:modeling},~\ref{sec:Evaluation}, we will introduce how we process the data under CRISP-DM.
+Then, in Section~\ref{sec:concept} we describe the adaptation of the original data to our expected data. Finally, we conclude our work in Section~\ref{sec:concl} with (XXXXXXXXXX placeholder --> to see if any section we want to add).
+In Section ~\ref{sec:dataPreparation}, ~\ref{sec:modeling},~\ref{sec:Evaluation}, we will introduce data processing under CRISP-DM.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Open Data: UFO Sightings} \label{sec:dataunderstanding}
-As part of the \emph{Data Understanding} phase for our data science project, we first look at the state concerning our problem. The material presented in this section is based on Kaggle \cite{kaggle}.
+As part of the \emph{Data Understanding} phase for our data warehousing project, we first look at the state concerning our problem. The material presented in this section is based on Kaggle \cite{kaggle}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Concept for Problem} \label{sec:concept}
-During the \emph{Data Understanding} phase, we find out a problem that we don't directly have the data we need .Additionally, some entries have NULL values. Accordingly, we need to have our Data prepared before the Analysis.
+During the \emph{Data Understanding} phase, we realized we didn't have out of the box columns containing some needed data. Additionally, some entries contained NULL values. Accordingly, there was need to have our Data prepared before the Analysis.
 
 \subsection{Data Profiling}\label{subsec:dataProfiling}
-In the \emph{Data Profiling} step, we realise we do not need to keep some columns. Accordingly, we will only keep the following columns:
+In the \emph{Data Profiling} step, we discovered irrelevant columns in our dataset and hence had to drop them.  Accordingly, we agreed to only keep the following columns:
 \begin{itemize}
     \item datetime
     \item city
@@ -121,29 +120,29 @@ In the \emph{Data Profiling} step, we realise we do not need to keep some column
     \item duration(second)
     \item date posted
 \end{itemize}
-Also, for the NULL values, we will fill a necessary value in different columns:
+Also, for the NULL values, we filled a necessary value in the corresponding columns using the below approach:
 \begin{itemize}
     \item city / state / country\\
-    If there are NULL values in city or state but not country. We will fill in the country in those two columns because we will mainly focus on the fact that the sighting was in a specific country. For those with both state and country missing, we will try to look at the city name, find the country and manually map as accurately as possible. The rest without enough information were filled with "unknown".
+    If there are NULL values in city or state but not country, We will fill in the country value in those columns since our analysis on the location dimension will be based on the Country table as it's finest granularity. For those with both state and country missing, we will try to perform a string search on the city for some clue, find the country and manually map as accurately as possible. The rest without enough information were filled with "unknown".
     \item shape\\
     We will fill in "unknown" to replace the NULL values.
 \end{itemize}
 
 \subsection{Tools}\label{subsec:tools}
-The list of all tools we use in this project and the purpose:  
+The summary of all tools used in this project and the application area:  
 \begin{itemize}
     \item SQLiteManager\\
     Data Cleaning, ETL process, CDWH \& DM creation
     \item DBSchema\\
     Forward Engineering
-    \item BIRT\\
+    \item BIRT and MySql Workbench\\
     Analytics
-    \item Python\\
-    Data Cleaning
+    \item Python and Pandas\\
+    Extra Data Cleaning and Enrichment
 \end{itemize}
     
 \subsection{DWH layout}\label{subsec:DWHLayout}
-After the ELT process, we should have a DHW which looks like this:
+After the ETL process, we had a DHW which looks like this:
 \begin{figure}[htb]
 	\centering
 		\includegraphics[width=1.0\columnwidth]{images/CDWHUFO}
@@ -158,36 +157,36 @@ After the ELT process, we should have a DHW which looks like this:
 This section deals with the implementation of the concept described in Section~\ref{sec:concept} following the \emph{Data Preparation}
 phase of CRISP-DM. 
 
-To solve the problem, we have the following steps:
+To solve the problem, we took the following steps:
 \begin{itemize}
   \item step 1 Extract \\
-  Download the data from the website then create a database to store all raw data.
+  Download the dataset from the website then create a database to store all raw data.
   \item step 2 Filtering\\
-  Fill in values by the rule that was mentioned in \ref{subsec:dataProfiling}.
+  Fill in values by the rule mentioned in \ref{subsec:dataProfiling}.
   \item step 3 Enrichment\\
-  We would like to see some relationship between the sighting, season, daytime or nighttime, country and so on.In other words, we need different dimentions. So we will create "new" data by using algorithms:
+  We would like to see some relationship between the sighting, season, daytime or nighttime, country and so on. In other words, we need different dimensions. So here "new" data is created by applying algorithms:
   \begin{itemize}
       \item Create new columns for the year, month, day, hour, daytime, season
-      \item Column year, month, day,hour\\
+      \item Column year, month, day, hour\\
       Extract data from column datetime
       \item Column daytime\\
-      From 6am to 6pm, it is defined as daytime. The rest is defined as nighttime
+      From 6am to 6pm is defined as daytime. The rest is defined as nighttime
       \item Column season\\
-      Compute by column month
+      Compute by aggregating corresponding seasonal months from the "month" column
   \end{itemize}
   
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Modeling} \label{sec:modeling}
-This section is to analyse the data we have prepared from Section ~\ref{sec:dataPreparation}.
+This section is to analyze the data we have prepared from Section ~\ref{sec:dataPreparation}.
 
-To analyse, we have the following steps:
+To analyze, we took the following steps:
 \begin{itemize}
     \item step 1\\
-    Import Cleaning Data in DWH (see DWH Layout in ~\ref{subsec:DWHLayout})
+    Import Cleansed Data into DWH (see DWH Layout in ~\ref{subsec:DWHLayout})
     \item step 2\\
-    For the performance and speed, we created four data marts for our goal (See Fig. \ref{fig:dm-cms}, \ref{fig:dm-css}, \ref{fig:dm-dcd}, \ref{fig:dm-scy})
+    For improved performance and speed during analysis, we created four data marts suiting our analytic goals (See Fig. \ref{fig:dm-cms}, \ref{fig:dm-css}, \ref{fig:dm-dcd}, \ref{fig:dm-scy})
       
     \begin{figure}[htb]
         \centering
@@ -218,9 +217,9 @@ To analyse, we have the following steps:
     \end{figure}
         
     \item step 3
-    Using BIRT, we generated reports and found the following facts:
+    Using BIRT connected to the MySql-Workbench backend, we generated reports and found the following facts:
         \begin{itemize}
-            \item Number of sightings in North American is extremely higher than in other continents. The next continent with the highest number of sightings is Europe.(See Fig.\ref{fig:continent})\\
+            \item Number of sightings in North America is extremely higher than in other continents. The next continent with the highest number of sightings is Europe,while there were no records for Africa, South America and Antarctica.(See Fig.\ref{fig:continent})\\
             - Data mart - Shape/Country/Year\\
             - Data cube - continent
                 
@@ -232,11 +231,11 @@ To analyse, we have the following steps:
             - Data mart - Shape/Country/Year\\
             - Data cube - year
                 
-            \item UFOs are most seen during the Summer. (See Fig. \ref{fig:sight-season})\\
+            \item UFOs were most seen during the Summer. (See Fig. \ref{fig:sight-season})\\
             - Data set - data mart - Continent/Shape/Season\\
             - Data cube - season
                  
-            \item Different UFO shapes are seen and the most common was light.(See Fig. \ref{fig:shape})\\
+            \item Different UFO shapes were recorded and the most common were "light-shaped".(See Fig. \ref{fig:shape})\\
             - Data set - data mart - Continent/Shape/Season\\
             - Data cube - shape
                 
@@ -296,11 +295,11 @@ To analyse, we have the following steps:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Evaluation} \label{sec:Evaluation}
-From the reports, we can find out the number of shapes, country and the number of ufo sightings depending on daytime or nighttime. Also the reports in different dimentions. We can safely say that we have reached the goal after evaluation.
+From the reports, we can see the rendered facts on Ufo shapes, country of sighting, and sightings depending on season and daytime -day or night, as well as reports in different dimensions. We can safely say that we have reached the project goals after evaluation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion} \label{sec:concl}
-We have shown in this paper how we processed the data under CRISP-DM and it shows different dimentions of shape, continents, country, seasons. 
+In this paper, we have shown the process and technicalities applied in building a CDWH and appropriate Data marts following the CRISP-DM process to facilitate analysis and proper visualization of the different dimensions in the Ufo Database which contains recorded Ufo sightings spanning a period of about One century.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
