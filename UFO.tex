@@ -3,6 +3,7 @@
 
 
 \usepackage{graphicx}
+\usepackage{float}
 
 
 %% this is to get centered captions (figure)
@@ -97,8 +98,7 @@ The data source has in total 11 columns covering the sighting time, location, sh
 
 \subsection{Structure of the Paper} \label{subsec:struct}
 The paper is structured as follows: in Section~\ref{sec:dataunderstanding} we present the availability of Open Data we used in this project.
-Then, in Section~\ref{sec:concept} we describe the adaptation of the original data to our expected data. Finally, we conclude our work in Section~\ref{sec:concl} with (XXXXXXXXXX placeholder --> to see if any section we want to add).
-In Section ~\ref{sec:dataPreparation}, ~\ref{sec:modeling},~\ref{sec:Evaluation}, we will introduce data processing under CRISP-DM.
+Then, in Section~\ref{sec:concept} we describe the adaptation of the original data to our expected data. In Section ~\ref{sec:dataPreparation}, ~\ref{sec:modeling},~\ref{sec:Evaluation}, we will introduce data processing under CRISP-DM \cite{dawaSlide}.Finally, we conclude our work in Section~\ref{sec:concl}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -123,7 +123,7 @@ In the \emph{Data Profiling} step, we discovered irrelevant columns in our datas
 Also, for the NULL values, we filled a necessary value in the corresponding columns using the below approach:
 \begin{itemize}
     \item city / state / country\\
-    If there are NULL values in city or state but not country, We will fill in the country value in those columns since our analysis on the location dimension will be based on the Country table as it's finest granularity. For those with both state and country missing, we will try to perform a string search on the city for some clue, find the country and manually map as accurately as possible. The rest without enough information were filled with "unknown".
+    If there are NULL values in city or state but not country, we will fill in the country value in those columns since our analysis on the location dimension will be based on the Country table as it's finest granularity. For those with both state and country missing, we will try to perform a string search on the city for some clue, find the country and manually map as accurately as possible. The rest without enough information were filled with "unknown".
     \item shape\\
     We will fill in "unknown" to replace the NULL values.
 \end{itemize}
@@ -188,28 +188,28 @@ To analyze, we took the following steps:
     \item step 2\\
     For improved performance and speed during analysis, we created four data marts suiting our analytic goals (See Fig. \ref{fig:dm-cms}, \ref{fig:dm-css}, \ref{fig:dm-dcd}, \ref{fig:dm-scy})
       
-    \begin{figure}[htb]
+    \begin{figure}[H]
         \centering
             \includegraphics[width=1.0\columnwidth]{images/city-month-shape}
         \caption{Data mart - city/month/shape}
         \label{fig:dm-cms}
     \end{figure}
 
-     \begin{figure}[htb]
+     \begin{figure}[H]
             \centering
 	            \includegraphics[width=1.0\columnwidth]{images/continent-shape-season}
             \caption{Data mart - continent/shape/season}
             \label{fig:dm-css}
         \end{figure}
 
-     \begin{figure}[htb]
+     \begin{figure}[H]
         \centering
             \includegraphics[width=1.0\columnwidth]{images/daytime-country-duration}
         \caption{Data mart - daytime/country/duration}
         \label{fig:dm-dcd}
     \end{figure}
 
-     \begin{figure}[htb]
+     \begin{figure}[H]
         \centering
             \includegraphics[width=1.0\columnwidth]{images/shape-country-year}
         \caption{Data mart - shape/country/year}
@@ -248,43 +248,43 @@ To analyze, we took the following steps:
             - Data cube - season, shape
                 
         \end{itemize}
-        \begin{figure}[t]
+        \begin{figure}[H]
             \centering
                 \includegraphics[width=1.0\columnwidth]{images/continent}
             \caption{Sightings by Location - Continent}
             \label{fig:continent}
         \end{figure}
-        \begin{figure}[t]
+        \begin{figure}[H]
             \centering
                 \includegraphics[width=1.0\columnwidth]{images/country}
             \caption{Sightings by Location - country}
             \label{fig:country}
         \end{figure}
-        \begin{figure}[t]
+        \begin{figure}[H]
             \centering
                 \includegraphics[width=1.0\columnwidth]{images/year}
             \caption{Sightings Over Time}
             \label{fig:year}
         \end{figure}
-        \begin{figure}[t]
+        \begin{figure}[H]
             \centering
                 \includegraphics[width=1.0\columnwidth]{images/sightings-season}
             \caption{Sightings Per Season}
             \label{fig:sight-season}
         \end{figure}
-        \begin{figure}[t]
+        \begin{figure}[H]
             \centering
                 \includegraphics[width=1.0\columnwidth]{images/shape}
             \caption{Different UFO Shapes Sighted}
             \label{fig:shape}
         \end{figure}
-        \begin{figure}[t]
+        \begin{figure}[H]
             \centering
                 \includegraphics[width=1.0\columnwidth]{images/shape-continent}
             \caption{Shapes Per Continent}
             \label{fig:shape-continent}
         \end{figure}
-        \begin{figure}[t]
+        \begin{figure}[H]
             \centering
                 \includegraphics[width=1.0\columnwidth]{images/shapes-seasons}
             \caption{Shapes Per Seasons}
